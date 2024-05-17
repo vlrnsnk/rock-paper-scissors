@@ -9,4 +9,11 @@ const getComputerChoice = () => {
   return choices[randomChoice];
 };
 
+const getHumanChoice = () => {
+  const humanChoice = prompt("Make your choice:");
+
+  return humanChoice;
+};
+
 console.log(getComputerChoice());
+console.log(getHumanChoice());
