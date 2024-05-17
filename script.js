@@ -24,8 +24,6 @@ const getHumanChoice = () => {
 };
 
 const playRound = (humanChoice, computerChoice) => {
-  console.log(humanChoice, computerChoice);
-
   if (humanChoice === computerChoice) {
     console.log(`It's a draw! ${humanChoice.toUpperCase()} vs ${computerChoice.toUpperCase()}.`);
     return;
@@ -46,10 +44,22 @@ const playRound = (humanChoice, computerChoice) => {
   }
 };
 
-const getWinner = (choice1, choice2) => {};
+const playGame = (rounds = 5) => {
+  for (let i = 0; i < rounds; i++) {
+    console.log(`Round ${i + 1}`);
+    const humanChoice = getHumanChoice();
+    const computerChoice = getComputerChoice();
+    playRound(humanChoice, computerChoice);
+    console.log(`Current score: You: ${humanScore} - Computer: ${computerScore}`);
+  }
 
-const humanChoice = getHumanChoice();
-const computerChoice = getComputerChoice();
+  if (humanScore > computerScore) {
+    console.log(`You've win the game! You: ${humanScore} - Computer: ${computerScore}`);
+  } else if (humanScore < computerScore) {
+    console.log(`You've lost the game! You: ${humanScore} - Computer: ${computerScore}`);
+  } else {
+    console.log(`This game ended in a draw! You: ${humanScore} - Computer: ${computerScore}`);
+  }
+};
 
-playRound(humanChoice, computerChoice);
-console.log(humanScore, computerScore);
+playGame();
