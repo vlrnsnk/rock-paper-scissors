@@ -45,6 +45,9 @@ const playRound = (humanChoice, computerChoice) => {
 };
 
 const playGame = (rounds = 5) => {
+  console.log(`Rock Paper Scissors Game - Play for ${rounds} Rounds`);
+  console.log(`Choose one of those: "rock", "paper", "scissors".`);
+
   for (let i = 0; i < rounds; i++) {
     console.log(`Round ${i + 1}`);
     const humanChoice = getHumanChoice();
