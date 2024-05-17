@@ -1,22 +1,33 @@
 let humanScore = 0;
 let computerScore = 0;
 
+const CHOICES = [
+  "rock",
+  "paper",
+  "scissors",
+];
+
 const getComputerChoice = () => {
-  const choices = [
-    "rock",
-    "paper",
-    "scissors",
-  ]
   const randomChoice = Math.floor(Math.random() * 3);
 
-  return choices[randomChoice];
+  return CHOICES[randomChoice];
 };
 
 const getHumanChoice = () => {
-  const humanChoice = prompt("Make your choice:");
+  let humanChoice = prompt("Make your choice:").toLowerCase();
+
+  while (!CHOICES.includes(humanChoice)) {
+    humanChoice = prompt("Invalid option, choose from ('rock', 'paper', 'scissors'):").toLowerCase();
+  }
 
   return humanChoice;
 };
 
-console.log(getComputerChoice());
-console.log(getHumanChoice());
+const playRound = (humanChoice, computerChoice) => {
+  console.log(humanChoice, computerChoice);
+};
+
+const humanChoice = getHumanChoice();
+const computerChoice = getComputerChoice();
+
+playRound(humanChoice, computerChoice);
