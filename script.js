@@ -25,9 +25,31 @@ const getHumanChoice = () => {
 
 const playRound = (humanChoice, computerChoice) => {
   console.log(humanChoice, computerChoice);
+
+  if (humanChoice === computerChoice) {
+    console.log(`It's a draw! ${humanChoice.toUpperCase()} vs ${computerChoice.toUpperCase()}.`);
+    return;
+  }
+
+  if (
+    humanChoice === "rock" && computerChoice === "scissors" ||
+    humanChoice === "paper" && computerChoice === "rock" ||
+    humanChoice === "scissors" && computerChoice === "paper"
+  ) {
+    console.log(`You win! ${humanChoice.toUpperCase()} beats ${computerChoice.toUpperCase()}.`);
+    humanScore++;
+    return;
+  } else {
+    console.log(`You lose! ${humanChoice.toUpperCase()} loses to ${computerChoice.toUpperCase()}.`);
+    computerScore++;
+    return;
+  }
 };
+
+const getWinner = (choice1, choice2) => {};
 
 const humanChoice = getHumanChoice();
 const computerChoice = getComputerChoice();
 
 playRound(humanChoice, computerChoice);
+console.log(humanScore, computerScore);
