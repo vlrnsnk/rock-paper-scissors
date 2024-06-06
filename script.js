@@ -1,6 +1,7 @@
 let humanScore = 0;
 let computerScore = 0;
 const movesEl = document.querySelector('.moves-wrapper');
+const resultsEl = document.querySelector('.results');
 
 const CHOICES = [
   "rock",
@@ -26,7 +27,8 @@ const getHumanChoice = () => {
 
 const playRound = (humanChoice, computerChoice) => {
   if (humanChoice === computerChoice) {
-    console.log(`It's a draw! ${humanChoice.toUpperCase()} vs ${computerChoice.toUpperCase()}.`);
+    resultsEl.textContent = `It's a draw! ${humanChoice.toUpperCase()} vs ${computerChoice.toUpperCase()}.`;
+
     return;
   }
 
@@ -35,12 +37,14 @@ const playRound = (humanChoice, computerChoice) => {
     humanChoice === "paper" && computerChoice === "rock" ||
     humanChoice === "scissors" && computerChoice === "paper"
   ) {
-    console.log(`You win! ${humanChoice.toUpperCase()} beats ${computerChoice.toUpperCase()}.`);
+    resultsEl.textContent = `You win! ${humanChoice.toUpperCase()} beats ${computerChoice.toUpperCase()}.`;
     humanScore++;
+
     return;
   } else {
-    console.log(`You lose! ${humanChoice.toUpperCase()} loses to ${computerChoice.toUpperCase()}.`);
+    resultsEl.textContent = `You lose! ${humanChoice.toUpperCase()} loses to ${computerChoice.toUpperCase()}.`;
     computerScore++;
+
     return;
   }
 };
@@ -56,9 +60,7 @@ movesEl.addEventListener('click', (event) => {
 console.log(`Rock Paper Scissors Game - Play for ${rounds} Rounds`);
 console.log(`Choose one of those: "rock", "paper", "scissors".`);
 
-
 console.log(`Round ${i + 1}`);
-
 
 console.log(`Current score: You: ${humanScore} - Computer: ${computerScore}`);
 
