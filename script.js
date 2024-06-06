@@ -32,11 +32,9 @@ const playRound = (humanChoice, computerChoice) => {
   round++;
   roundEl.textContent = `Round #${round}`;
 
-  if (humanChoice === computerChoice) {
+  if (humanChoice == computerChoice) {
     resultsEl.textContent = `It's a draw! ${humanChoice.toUpperCase()} vs ${computerChoice.toUpperCase()}.`;
-  }
-
-  if (
+  } else if (
     humanChoice === "rock" && computerChoice === "scissors" ||
     humanChoice === "paper" && computerChoice === "rock" ||
     humanChoice === "scissors" && computerChoice === "paper"
@@ -49,7 +47,6 @@ const playRound = (humanChoice, computerChoice) => {
   }
 
   scoreEl.textContent = `Current score: You: ${humanScore} - Computer: ${computerScore}`;
-  console.log(round);
 
   if (round == 5) {
     if (humanScore > computerScore) {
@@ -61,6 +58,8 @@ const playRound = (humanChoice, computerChoice) => {
     }
 
     round = 0;
+    humanScore = 0;
+    computerScore = 0;
   }
 };
 
