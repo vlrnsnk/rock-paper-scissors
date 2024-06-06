@@ -1,7 +1,10 @@
 let humanScore = 0;
 let computerScore = 0;
+let round = 0;
 const movesEl = document.querySelector('.moves-wrapper');
 const resultsEl = document.querySelector('.results');
+const scoreEl = document.querySelector('.score');
+const roundEl = document.querySelector('.round');
 
 const CHOICES = [
   "rock",
@@ -26,10 +29,11 @@ const getHumanChoice = () => {
 };
 
 const playRound = (humanChoice, computerChoice) => {
+  round++;
+  roundEl.textContent = `Round #${round}`;
+
   if (humanChoice === computerChoice) {
     resultsEl.textContent = `It's a draw! ${humanChoice.toUpperCase()} vs ${computerChoice.toUpperCase()}.`;
-
-    return;
   }
 
   if (
@@ -39,13 +43,24 @@ const playRound = (humanChoice, computerChoice) => {
   ) {
     resultsEl.textContent = `You win! ${humanChoice.toUpperCase()} beats ${computerChoice.toUpperCase()}.`;
     humanScore++;
-
-    return;
   } else {
     resultsEl.textContent = `You lose! ${humanChoice.toUpperCase()} loses to ${computerChoice.toUpperCase()}.`;
     computerScore++;
+  }
 
-    return;
+  scoreEl.textContent = `Current score: You: ${humanScore} - Computer: ${computerScore}`;
+  console.log(round);
+
+  if (round == 5) {
+    if (humanScore > computerScore) {
+      scoreEl.textContent = `You've win the game! You: ${humanScore} - Computer: ${computerScore}`;
+    } else if (humanScore < computerScore) {
+      scoreEl.textContent = `You've lost the game! You: ${humanScore} - Computer: ${computerScore}`;
+    } else {
+      scoreEl.textContent = `This game ended in a draw! You: ${humanScore} - Computer: ${computerScore}`;
+    }
+
+    round = 0;
   }
 };
 
@@ -55,19 +70,3 @@ movesEl.addEventListener('click', (event) => {
 
   playRound(humanChoice, computerChoice);
 });
-
-
-console.log(`Rock Paper Scissors Game - Play for ${rounds} Rounds`);
-console.log(`Choose one of those: "rock", "paper", "scissors".`);
-
-console.log(`Round ${i + 1}`);
-
-console.log(`Current score: You: ${humanScore} - Computer: ${computerScore}`);
-
-if (humanScore > computerScore) {
-  console.log(`You've win the game! You: ${humanScore} - Computer: ${computerScore}`);
-} else if (humanScore < computerScore) {
-  console.log(`You've lost the game! You: ${humanScore} - Computer: ${computerScore}`);
-} else {
-  console.log(`This game ended in a draw! You: ${humanScore} - Computer: ${computerScore}`);
-}
