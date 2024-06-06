@@ -44,17 +44,17 @@ const playRound = (humanChoice, computerChoice) => {
   }
 };
 
-const playGame = (rounds = 5) => {
+
   console.log(`Rock Paper Scissors Game - Play for ${rounds} Rounds`);
   console.log(`Choose one of those: "rock", "paper", "scissors".`);
 
-  for (let i = 0; i < rounds; i++) {
+  
     console.log(`Round ${i + 1}`);
     const humanChoice = getHumanChoice();
     const computerChoice = getComputerChoice();
     playRound(humanChoice, computerChoice);
     console.log(`Current score: You: ${humanScore} - Computer: ${computerScore}`);
-  }
+  
 
   if (humanScore > computerScore) {
     console.log(`You've win the game! You: ${humanScore} - Computer: ${computerScore}`);
@@ -63,6 +63,3 @@ const playGame = (rounds = 5) => {
   } else {
     console.log(`This game ended in a draw! You: ${humanScore} - Computer: ${computerScore}`);
   }
-};
-
-playGame();
